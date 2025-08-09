@@ -1,0 +1,58 @@
+#  未来配置文件有两个维度  6种写法    （用springboot不是一定要用springcloud   用springcloud基本都会用springboot）
+# 1.application.xxx---springboot默认提供的（只要是springboot应用）
+# 2.bootstrap.xxx---springcloud提供的（只要引入cloud的某些组件）
+#bootstrap的优先级会高于application优先级  bootstrap.properties application.properties
+# xxx有三种形式：properties(优先级最高)  yaml   yml
+
+
+#  application中主要配置应用需要的各个组件的信息（MySQL  Redis   MQ...）
+
+server:
+  port: 8510   # user微服务的端口
+
+
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource   # 数据源连接池（最快）
+    driver-class-name: com.mysql.jdbc.Driver   # 指定数据库的驱动
+    url: jdbc:mysql://localhost:3307/tingshu_user
+    username: root
+    password: root
+
+  main:
+    allow-bean-definition-overriding: true   #这种写法会有风险
+
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    publisher-confirm-type: CORRELATED  # 发布确认模式
+    publisher-returns: true  # 确保消息返回 上游发布者回调
+    # 下游应答，保证消息被百分百应答
+    listener:
+      simple:
+        acknowledge-mode: manual #默认情况下消息消费者是自动确认消息的，如果要手动确认消息则需要修改确认模式为 manual
+        prefetch: 1 # 在prefetch=1的情况下，消费者在确认当前消息之前不会收到新的消息  在多个消费者下也不会将多个未确认的消息同时发送给同一个消费者。
+
+
+# Redis
+  data:
+    redis:
+      host: 127.0.0.1
+      port: 6379
+      database: 0
+
+wx: # 自定义的定格写
+  login:
+    appId: wxd7287de588af9f92
+    appSecret: 22e6833bbcd1c144bcff714c92361d9a
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.anran.tingshu.album.mapper.BaseCategory1Mapper">
+
+    <resultMap id="baseCategoryResult" type="com.anran.tingshu.vo.category.CategoryVo" >
+        <id column="category1Id" property="id"></id>
+        <result column="category1Name" property="name"></result>
+        <collection property="categoryChildren" ofType="com.anran.tingshu.vo.category.CategoryVo">
+            <id column="category2Id" property="id"></id>
+            <result column="category2Name" property="name"></result>
+            <collection property="categoryChildren" ofType="com.anran.tingshu.vo.category.CategoryVo">
+                <id column="category3Id" property="id"></id>
+                <result column="category3Name" property="name"></result>
+            </collection>
+        </collection>
+    </resultMap>
+
+    <select id="getBaseCategoryList" resultMap="baseCategoryResult">
+        SELECT category1_id as category1Id,
+               category1_name as category1Name,
+               category2_id as category2Id,
+               category2_name as category2Name,
+               category3_id as category3Id,
+               category3_name as category3Name
+        FROM `base_category_view`
+        WHERE base_category_view.is_deleted = 0
+    </select>
+</mapper>
+

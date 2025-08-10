@@ -36,6 +36,9 @@ public class BaseCategoryServiceImpl extends ServiceImpl<BaseCategory1Mapper, Ba
 	private BaseCategoryViewMapper baseCategoryViewMapper;
 
 
+	/**
+	 * 通过 Mybatis 框架自定义映射实现分级查询
+	 */
 	@Override
 	public List<CategoryVo> getBaseCategoryList() {
 		return baseCategory1Mapper.getBaseCategoryList();

@@ -1,6 +1,6 @@
 package com.anran.tingshu.album.api;
 
-import com.anran.tingshu.album.config.MinioConstantProperties;
+import com.anran.tingshu.album.config.MinioProperties;
 import com.anran.tingshu.album.service.FileUploadService;
 import com.anran.tingshu.common.result.Result;
 import io.swagger.v3.oas.annotations.Operation;
@@ -22,7 +22,7 @@ import java.security.NoSuchAlgorithmException;
 public class FileUploadApiController {
 
     @Autowired
-    private MinioConstantProperties minioConstantProperties;
+    private MinioProperties minioProperties;
 
     @Resource
     private FileUploadService fileUploadService;

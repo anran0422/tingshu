@@ -34,7 +34,11 @@ spring:
       port: 6379
       database: 0
 
-
+minio:
+  endpointUrl: http://localhost:9000
+  accessKey: admin
+  secretKey: admin123456
+  bucketName: tingshu
 
 
 

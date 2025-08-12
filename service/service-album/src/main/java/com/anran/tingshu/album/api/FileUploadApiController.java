@@ -21,16 +21,13 @@ import java.security.NoSuchAlgorithmException;
 @RequestMapping("api/album")
 public class FileUploadApiController {
 
-    @Autowired
-    private MinioProperties minioProperties;
-
     @Resource
     private FileUploadService fileUploadService;
 
     @Operation(summary = "图片文件的上传")
     @PostMapping("/fileUpload")
-    public Result fileUpload(MultipartFile file) throws IOException, NoSuchAlgorithmException, InvalidKeyException {
+    public Result fileUpload(MultipartFile file){
         String pictureUrl =  fileUploadService.fileUpload(file);
-        return Result.ok();
+        return Result.ok(pictureUrl);
     }
 }

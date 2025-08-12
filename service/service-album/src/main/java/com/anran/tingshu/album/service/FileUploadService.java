@@ -7,5 +7,5 @@ import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 
 public interface FileUploadService {
-    String fileUpload(MultipartFile file) throws IOException, NoSuchAlgorithmException, InvalidKeyException;
+    String fileUpload(MultipartFile file);
 }

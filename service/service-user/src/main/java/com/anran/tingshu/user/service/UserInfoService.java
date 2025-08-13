@@ -1,6 +1,7 @@
 package com.anran.tingshu.user.service;
 
 import com.anran.tingshu.model.user.UserInfo;
+import com.anran.tingshu.vo.user.UserInfoVo;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 import java.util.Map;
@@ -16,4 +17,6 @@ public interface UserInfoService extends IService<UserInfo> {
     Map<String, Object> wxLogin(String code);
 
     Map<String, Object> getNewAccessToken();
+
+    void updateUser(UserInfoVo userInfoVo);
 }

@@ -14,21 +14,15 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
-import java.util.Objects;
 
 @Tag(name = "微信授权登录接口")
 @RestController
 @RequestMapping("/api/user/wxLogin")
 @Slf4j
 public class WxLoginApiController {
-
-//    Request URL: http://localhost:8500/api/user/wxLogin/wxLogin/0a3Iae1007ceoU1pIQ30043RDb3Iae1w
 
     @Autowired
     private UserInfoService userInfoService;
@@ -74,4 +68,16 @@ public class WxLoginApiController {
         }
         return Result.ok(map);
     }
+
+    @PostMapping("/updateUser")
+    @Operation(summary = "更新登录用户信息")
+    @TingshuLogin
+    public Result updateUser(@RequestBody UserInfoVo userInfoVo) {
+        if(userInfoVo == null) {
+            throw new BusinessException(201, "用户信息参数错误");
+        }
+        userInfoService.updateUser(userInfoVo);
+        return Result.ok();
+    }
+
 }

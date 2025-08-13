@@ -9,9 +9,11 @@ import com.anran.tingshu.common.constant.RedisConstant;
 import com.anran.tingshu.common.execption.BusinessException;
 import com.anran.tingshu.common.rabbit.constant.MqConst;
 import com.anran.tingshu.common.rabbit.service.RabbitService;
+import com.anran.tingshu.common.util.AuthContextHolder;
 import com.anran.tingshu.model.user.UserInfo;
 import com.anran.tingshu.user.mapper.UserInfoMapper;
 import com.anran.tingshu.user.service.UserInfoService;
+import com.anran.tingshu.vo.user.UserInfoVo;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import jakarta.servlet.http.HttpServletRequest;
@@ -184,5 +186,23 @@ public class UserInfoServiceImpl extends ServiceImpl<UserInfoMapper, UserInfo> i
             result.put("1", "v");
         }
         return result;
+    }
+
+    /**
+     * 更新用户信息
+     * @param userInfoVo
+     */
+    @Override
+    public void updateUser(UserInfoVo userInfoVo) {
+
+        // 得到当前登录用户
+        Long userId = AuthContextHolder.getUserId();
+        UserInfo userInfo = userInfoMapper.selectById(userId);
+        if(userInfo == null) {
+            throw new BusinessException(201, "用户不存在");
+        }
+        userInfo.setNickname(userInfoVo.getNickname());
+        userInfo.setAvatarUrl(userInfoVo.getAvatarUrl());
+        userInfoMapper.updateById(userInfo);
     }
 }

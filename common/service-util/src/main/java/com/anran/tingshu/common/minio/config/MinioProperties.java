@@ -1,4 +1,4 @@
-package com.anran.tingshu.album.config;
+package com.anran.tingshu.common.minio.config;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

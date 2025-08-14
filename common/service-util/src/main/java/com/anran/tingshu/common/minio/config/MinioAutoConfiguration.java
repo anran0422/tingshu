@@ -1,4 +1,4 @@
-package com.anran.tingshu.album.config;
+package com.anran.tingshu.common.minio.config;
 
 
 import com.anran.tingshu.common.execption.BusinessException;
@@ -7,9 +7,9 @@ import io.minio.MakeBucketArgs;
 import io.minio.MinioClient;
 import io.minio.SetBucketPolicyArgs;
 
-import jakarta.annotation.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,6 +17,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @EnableConfigurationProperties(MinioProperties.class)
+@ConditionalOnProperty(prefix = "minio", value = "enable", havingValue = "true")
 public class MinioAutoConfiguration {
 
     Logger logger  = LoggerFactory.getLogger(this.getClass());

@@ -1,19 +1,16 @@
-package com.anran.tingshu.album.service.impl;
+package com.anran.tingshu.common.minio.service.impl;
 
-import com.anran.tingshu.album.config.MinioProperties;
-import com.anran.tingshu.album.service.FileUploadService;
+import com.anran.tingshu.common.minio.config.MinioProperties;
 import com.anran.tingshu.common.execption.BusinessException;
+import com.anran.tingshu.common.minio.service.FileUploadService;
 import com.anran.tingshu.common.util.MD5;
 import io.minio.*;
-import io.minio.errors.*;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
 
 @Service
 @Slf4j

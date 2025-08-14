@@ -1,4 +1,4 @@
-package com.anran.tingshu.album.service;
+package com.anran.tingshu.common.minio.service;
 
 import org.springframework.web.multipart.MultipartFile;
 

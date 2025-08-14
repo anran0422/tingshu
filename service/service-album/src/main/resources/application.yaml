@@ -46,6 +46,7 @@ minio:
   accessKey: admin
   secretKey: admin123456
   bucketName: tingshu
+  enable: true
 
 
 

@@ -104,6 +104,11 @@
             <version>1.0.9.RELEASE</version>
         </dependency>
 
+        <dependency>
+            <groupId>io.minio</groupId>
+            <artifactId>minio</artifactId>
+        </dependency>
+
     </dependencies>
 
 </project>

@@ -2,11 +2,12 @@ package com.anran.tingshu.common.minio.config;
 
 
 import com.anran.tingshu.common.execption.BusinessException;
+import com.anran.tingshu.common.minio.service.FileUploadService;
+import com.anran.tingshu.common.minio.service.impl.FileUploadServiceImpl;
 import io.minio.BucketExistsArgs;
 import io.minio.MakeBucketArgs;
 import io.minio.MinioClient;
 import io.minio.SetBucketPolicyArgs;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -72,7 +73,10 @@ public class MinioAutoConfiguration {
             logger.error("minioClient 对象创建失败:{}", e.getMessage());
             throw new BusinessException(201, "minio 对象创建失败");
         }
+    }
 
-
+    @Bean
+    public FileUploadService fileUploadService() {
+        return new FileUploadServiceImpl();
     }
 }

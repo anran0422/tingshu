@@ -10,15 +10,15 @@ public class CategoryVo {
     /**
      * 分类 id
      */
-    private Long id;
+    private Long categoryId;
     /**
      * 分类 名称
      */
-    private String name;
+    private String categoryName;
     /**
      * 分类 孩子
      */
-    private List<CategoryVo> categoryChildren;
+    private List<CategoryVo> categoryChild;
 
 
 

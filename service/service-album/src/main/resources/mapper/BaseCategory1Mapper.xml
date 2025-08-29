@@ -7,14 +7,14 @@ PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.anran.tingshu.album.mapper.BaseCategory1Mapper">
 
     <resultMap id="baseCategoryResult" type="com.anran.tingshu.vo.category.CategoryVo" >
-        <id column="category1Id" property="id"></id>
-        <result column="category1Name" property="name"></result>
-        <collection property="categoryChildren" ofType="com.anran.tingshu.vo.category.CategoryVo">
-            <id column="category2Id" property="id"></id>
-            <result column="category2Name" property="name"></result>
-            <collection property="categoryChildren" ofType="com.anran.tingshu.vo.category.CategoryVo">
-                <id column="category3Id" property="id"></id>
-                <result column="category3Name" property="name"></result>
+        <id column="category1Id" property="categoryId"></id>
+        <result column="category1Name" property="categoryName"></result>
+        <collection property="categoryChild" ofType="com.anran.tingshu.vo.category.CategoryVo">
+            <id column="category2Id" property="categoryId"></id>
+            <result column="category2Name" property="categoryName"></result>
+            <collection property="categoryChild" ofType="com.anran.tingshu.vo.category.CategoryVo">
+                <id column="category3Id" property="categoryId"></id>
+                <result column="category3Name" property="categoryName"></result>
             </collection>
         </collection>
     </resultMap>
